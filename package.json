@@ -15,6 +15,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@rollup/plugin-multi-entry": "^6.0.0",
 		"@rollup/plugin-typescript": "^11.0.0",
 		"@sveltejs/adapter-auto": "^1.0.0",
 		"@sveltejs/kit": "^1.0.0",
@@ -41,5 +42,8 @@
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"rollup": "^3.9.1",
 		"rollup-plugin-svelte": "^7.1.0"
-	}
+	},
+	"main": "dist/cjs/index.js",
+	"module": "dist/index.js",
+	"typings": "dist/index.d.ts"
 }
