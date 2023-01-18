@@ -1,0 +1,122 @@
+.editorTopBar {
+	border-top: 3px solid black;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-radius: 6px 6px 0px 0px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+
+	> *:not(.divide) {
+		padding: 0.25rem;
+		margin: 0.1rem;
+		margin-right: 0.25rem;
+	}
+
+	.divide:not(:last-child) {
+		width: 2px;
+		margin: 7px 5px 7px 5px;
+		height: 15px;
+		background-color: #00000020;
+	}
+
+	button {
+		width: 1.75rem;
+		height: 1.75rem;
+		color: #0d0d0d;
+		border: none;
+		background-color: transparent;
+		border-radius: 0.4rem;
+		padding: 0.25rem;
+		margin: 0.1rem;
+		margin-right: 0.25rem;
+		cursor: pointer;
+
+		&.is-active {
+			background-color: #00000050;
+		}
+
+		&:disabled {
+			opacity: 0.2;
+			cursor: default;
+		}
+
+		&:hover {
+			background-color: #00000010;
+		}
+
+		&.is-active:hover {
+			background-color: #00000070;
+		}
+	}
+	input[type='color'] {
+		height: 2rem;
+		width: 1.75rem;
+		border: none;
+		background-color: transparent;
+		border-radius: 0.4rem;
+		padding: 0.25rem;
+		margin-right: 0.25rem;
+	}
+	.colorBar {
+		height: 4px;
+	}
+}
+
+.editorBottomBar {
+	min-height: 20px;
+	border-bottom: 3px solid black;
+	border-right: 3px solid black;
+	border-left: 3px solid black;
+	border-radius: 0px 0px 6px 6px;
+	display: flex;
+	flex-direction: row;
+
+	.characterCount {
+		flex: 1;
+		text-align: right;
+		margin-right: 1rem;
+	}
+}
+
+.ProseMirror {
+	border: 3px solid black;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+.tablemenu {
+	border: 3px solid black;
+	background-color: white;
+
+	button {
+		width: 1.75rem;
+		height: 1.75rem;
+		color: #0d0d0d;
+		border: none;
+		background-color: white;
+		border-radius: 0.4rem;
+		padding: 0.25rem;
+		margin: 0.1rem;
+		margin-right: 0.25rem;
+		cursor: pointer;
+
+		&.is-active {
+			background-color: #00000050;
+		}
+
+		&:disabled {
+			opacity: 0.2;
+			cursor: default;
+		}
+
+		&:hover {
+			background-color: #00000010;
+		}
+	}
+}

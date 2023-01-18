@@ -1,22 +1,16 @@
-declare var cctest1_component: Readonly<{
-    __proto__: null;
-    default: {
-        new (options: any): {
-            $destroy(): void;
-            $on(type: any, callback: any): () => void;
-            $set($$props: any): void;
-        };
-    };
-}>;
-declare var cctest2_component: Readonly<{
-    __proto__: null;
-    default: {
-        new (options: any): {
-            $destroy(): void;
-            $on(type: any, callback: any): () => void;
-            $set($$props: any): void;
-        };
-    };
-}>;
+declare class Btntest_component extends SvelteComponent {
+    constructor(options: any);
+    set count(arg: any);
+    get count(): any;
+}
+/**
+ * Base class for Svelte components. Used when dev=false.
+ */
+declare class SvelteComponent {
+    $destroy(): void;
+    $on(type: any, callback: any): typeof noop;
+    $set($$props: any): void;
+}
+declare function noop(): void;
 
-export { cctest1_component as cctest1, cctest2_component as cctest2 };
+export { Btntest_component as btntest };
