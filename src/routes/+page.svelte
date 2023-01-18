@@ -7,6 +7,7 @@
 	import Editorquickfont from '../lib/editor/editor-exection/exection-quickfont.svelte';
 	import Editorfamilyfont from '../lib/editor/editor-exection/exection-familyfont.svelte';
 	import Editoralign from '../lib/editor/editor-exection/exection-align.svelte';
+	import { onMount } from 'svelte';
 
 	let editor: any;
 	let times: any;
@@ -18,20 +19,45 @@
 	const onupdate = (data: any) => {
 		console.log(data);
 	};
+	onMount(() => {
+		new Editortopbar({
+			target: document.querySelector('.topBarClass') as HTMLElement,
+			props: {
+				target: document.querySelector('.topBarClass') as HTMLElement
+			}
+		});
+		new Editorhistory({
+			target: document.querySelector('.topBarClass') as HTMLElement,
+			props: {
+				editor: editor
+			}
+		});
+		new Editorquickfont({
+			target: document.querySelector('.topBarClass') as HTMLElement,
+			props: {
+				editor: editor
+			}
+		});
+		new Editorfamilyfont({
+			target: document.querySelector('.topBarClass') as HTMLElement,
+			props: {
+				editor: editor
+			}
+		});
+		new Editoralign({
+			target: document.querySelector('.topBarClass') as HTMLElement,
+			props: {
+				editor: editor
+			}
+		});
+	});
 </script>
 
 <h1>Welcome to your library project</h1>
 <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <Btntest />
-<div class="editorTopBar">
-	<Editortopbar>
-		<Editoralign {editor} />
-		<Editorhistory {editor} bind:updatetime={times} on:update={onupdate} />
-		<Editorquickfont {editor} />
-		<Editorfamilyfont {editor} />
-	</Editortopbar>
-</div>
+<div class="topBarClass" />
 
 <Editorcore bind:editor />
 

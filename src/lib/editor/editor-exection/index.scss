@@ -21,6 +21,13 @@
 		background-color: #00000020;
 	}
 
+	:not(:last-child) > .divide {
+		width: 2px;
+		margin: 7px 5px 7px 5px;
+		height: 15px;
+		background-color: #00000020;
+	}
+
 	button {
 		width: 1.75rem;
 		height: 1.75rem;

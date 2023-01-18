@@ -6,19 +6,12 @@
 	import { faUndo, faRedo } from '@fortawesome/free-solid-svg-icons';
 
 	export let editor: Editor;
-	export let updatetime: number = 0;
-
-	const dispatch = createEventDispatcher();
 
 	let undo = false;
 	let redo = false;
 
 	$: editor,
 		editor?.on('update', () => {
-			updatetime += 1;
-			dispatch('update', {
-				updatetime
-			});
 			undo = editor?.can().chain().focus().undo().run();
 			redo = editor?.can().chain().focus().redo().run();
 		});

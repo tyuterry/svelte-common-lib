@@ -1,6 +1,6 @@
 {
 	"name": "svelte-common-lib-terry",
-	"version": "0.0.3",
+	"version": "0.0.6",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "npm run build-rm-first && npm run build-rollup && npm run build-rollup-dts",
