@@ -68,7 +68,7 @@ import { editoralign } from 'svelte-common-lib-terry/editor/editor-exection' // 
 
 ## use on Angular
 ```json
-//angular.json
+// angular.json
 "options":{
   "styles": [
     "svelte-common-lib-terry/editor/editor-core/index.css",
