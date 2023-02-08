@@ -7,13 +7,13 @@
 
 	export let editor: Editor;
 
-	let undo = false;
-	let redo = false;
+	let canToggleundo = false;
+	let canToggleredo = false;
 
 	$: editor,
 		editor?.on('update', () => {
-			undo = editor?.can().chain().focus().undo().run();
-			redo = editor?.can().chain().focus().redo().run();
+			canToggleundo = editor?.can().chain().focus().undo().run();
+			canToggleredo = editor?.can().chain().focus().redo().run();
 		});
 
 	onDestroy(() => {
@@ -21,10 +21,10 @@
 	});
 </script>
 
-<button on:click={editor.chain().focus().undo().run} disabled={!undo}>
+<button on:click={editor.chain().focus().undo().run} disabled={!canToggleundo}>
 	<Fa icon={faUndo} />
 </button>
-<button on:click={editor.chain().focus().redo().run} disabled={!redo}>
+<button on:click={editor.chain().focus().redo().run} disabled={!canToggleredo}>
 	<Fa icon={faRedo} />
 </button>
 <div class="divide" />

@@ -12,9 +12,9 @@
 
 	export let editor: Editor;
 
-	let toggleBold = false;
-	let toggleItalic = false;
-	let toggleStrike = false;
+	let canToggleBold = false;
+	let canToggleItalic = false;
+	let canToggleStrike = false;
 
 	let boldIsActive = false;
 	let italicIsActive = false;
@@ -23,9 +23,9 @@
 
 	$: editor,
 		editor?.on('transaction', () => {
-			toggleBold = editor?.can().chain().focus().toggleBold().run();
-			toggleItalic = editor?.can().chain().focus().toggleItalic().run();
-			toggleStrike = editor?.can().chain().focus().toggleStrike().run();
+			canToggleBold = editor?.can().chain().focus().toggleBold().run();
+			canToggleItalic = editor?.can().chain().focus().toggleItalic().run();
+			canToggleStrike = editor?.can().chain().focus().toggleStrike().run();
 
 			boldIsActive = editor?.isActive('bold');
 			italicIsActive = editor?.isActive('italic');
@@ -34,27 +34,27 @@
 		});
 
 	onDestroy(() => {
-		editor?.off('selectionUpdate');
+		editor?.off('transaction');
 	});
 </script>
 
 <button
 	on:click={editor.chain().focus().toggleBold().run}
-	disabled={!toggleBold}
+	disabled={!canToggleBold}
 	class={boldIsActive ? 'is-active' : ''}
 >
 	<Fa icon={faBold} />
 </button>
 <button
 	on:click={editor.chain().focus().toggleItalic().run}
-	disabled={!toggleItalic}
+	disabled={!canToggleItalic}
 	class={italicIsActive ? 'is-active' : ''}
 >
 	<Fa icon={faItalic} />
 </button>
 <button
 	on:click={editor.chain().focus().toggleStrike().run}
-	disabled={!toggleStrike}
+	disabled={!canToggleStrike}
 	class={strikeIsActive ? 'is-active' : ''}
 >
 	<Fa icon={faStrikethrough} />

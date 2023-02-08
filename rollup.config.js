@@ -2,6 +2,7 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import commonjs from '@rollup/plugin-commonjs';
 import scss from 'rollup-plugin-scss';
 
 import Fs from 'fs';
@@ -49,6 +50,7 @@ const bundleIndex = getAllFilePath('./src/lib', ['.js'], 'index.js').map((fileIn
 				dedupe: ['svelte']
 			}),
 			typescript(),
+			commonjs(),
 			scss({
 				fileName: 'index.css'
 			})

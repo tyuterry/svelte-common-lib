@@ -1,2 +1,2 @@
 export * from './editor-core';
-export * from './editor-exection';
+export * from './editor-ui-exection';

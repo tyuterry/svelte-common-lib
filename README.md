@@ -1,3 +1,8 @@
+# 協力套件
+lodash
+Tippy.js
+fontAwesome
+
 # 指令
 
 ## 組件包試用
@@ -41,27 +46,27 @@ import { editorcore } from 'svelte-common-lib-terry/editor/editoe-core'; // 編�
 
 //editorhistory  擇一
 import { editorhistory} from 'svelte-common-lib-terry/editor' // 編輯器相關總引入
-import { editorhistory } from 'svelte-common-lib-terry/editor/editor-exection' // 編輯器插件相關引入
+import { editorhistory } from 'svelte-common-lib-terry/editor/editor-ui-extensions' // 編輯器插件相關引入
 
 
 //editorquickfont  擇一
 import { editorquickfont} from 'svelte-common-lib-terry/editor' // 編輯器相關總引入
-import { editorquickfont } from 'svelte-common-lib-terry/editor/editor-exection' // 編輯器插件相關引入
+import { editorquickfont } from 'svelte-common-lib-terry/editor/editor-ui-extensions' // 編輯器插件相關引入
 
 
 //editortopbar  擇一
 import { editortopbar} from 'svelte-common-lib-terry/editor' // 編輯器相關總引入
-import { editortopbar } from 'svelte-common-lib-terry/editor/editor-exection' // 編輯器插件相關引入
+import { editortopbar } from 'svelte-common-lib-terry/editor/editor-ui-extensions' // 編輯器插件相關引入
 
 
 //editorfamilyfont  擇一
 import { editorfamilyfont} from 'svelte-common-lib-terry/editor' // 編輯器相關總引入
-import { editorfamilyfont } from 'svelte-common-lib-terry/editor/editor-exection' // 編輯器插件相關引入
+import { editorfamilyfont } from 'svelte-common-lib-terry/editor/editor-ui-extensions' // 編輯器插件相關引入
 
 
 //editoralign  擇一
 import { editoralign} from 'svelte-common-lib-terry/editor' // 編輯器相關總引入
-import { editoralign } from 'svelte-common-lib-terry/editor/editor-exection' // 編輯器插件相關引入
+import { editoralign } from 'svelte-common-lib-terry/editor/editor-ui-extensions' // 編輯器插件相關引入
 
 ```
 
@@ -72,7 +77,7 @@ import { editoralign } from 'svelte-common-lib-terry/editor/editor-exection' // 
 "options":{
   "styles": [
     "svelte-common-lib-terry/editor/editor-core/index.css",
-    "svelte-common-lib-terry/editor/editor-exection/index.css"
+    "svelte-common-lib-terry/editor/editor-ui-extensions/index.css"
   ],
 }
 ```
@@ -93,7 +98,7 @@ import {
   editorquickfont,
   editorfamilyfont,
   editoralign
-} from 'svelte-common-lib-terry/editor/editor-exection';
+} from 'svelte-common-lib-terry/editor/editor-ui-extensions';
 import { btntest } from 'svelte-common-lib-terry/btntest';
 //...
 
@@ -142,7 +147,7 @@ import { btntest } from 'svelte-common-lib-terry/btntest';
 ```css
 /* main.css */
 @import '/node_modules/svelte-common-lib-terry/editor/editor-core/index.css';
-@import '/node_modules/svelte-common-lib-terry/editor/editor-exection/index.css';
+@import '/node_modules/svelte-common-lib-terry/editor/editor-ui-extensions/index.css';
 ```
 
 ```html
@@ -161,7 +166,7 @@ import {
   editorquickfont,
   editorfamilyfont,
   editoralign,
-} from "svelte-common-lib-terry/editor/editor-exection";
+} from "svelte-common-lib-terry/editor/editor-ui-extensions";
 import { btntest } from "svelte-common-lib-terry/btntest";
 
 import { onMounted, ref, type Ref } from "vue";

@@ -11,9 +11,6 @@
 	} from '@fortawesome/free-solid-svg-icons';
 
 	export let editor: Editor;
-	export let updatetime: number = 0;
-
-	const dispatch = createEventDispatcher();
 
 	let isActiveLeft = false;
 	let isActiveCenter = false;
@@ -29,7 +26,7 @@
 		});
 
 	onDestroy(() => {
-		editor?.off('update');
+		editor?.off('transaction');
 	});
 </script>
 

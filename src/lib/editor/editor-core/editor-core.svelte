@@ -1,11 +1,12 @@
+<svelte:options accessors={true} />
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 
 	import { Editor } from '@tiptap/core';
 
 	import StarterKit from '@tiptap/starter-kit';
-	import BulletList from '@tiptap/extension-bullet-list';
-	// import { Image } from './extension/resizeimage.extension';
+	import { Image } from '../editor-exection/resizeimage.extension';
 	import Highlight from '@tiptap/extension-highlight';
 	import Table from '@tiptap/extension-table';
 	import TableCell from '@tiptap/extension-table-cell';
@@ -21,11 +22,10 @@
 	import CharacterCount from '@tiptap/extension-character-count';
 	import Placeholder from '@tiptap/extension-placeholder';
 	import TextAlign from '@tiptap/extension-text-align';
-	// import { Indent, getIndent, getOutdent } from './extension/indent.extension';
-	// import { CustomBubbleMenu } from './extension/custombubblemenu.extension';
+	import { Indent } from '../editor-exection/indent.extension';
+	import { CustomBubbleMenu } from '../editor-exection/custombubblemenu.extension';
 	import FontFamily from '@tiptap/extension-font-family';
-	// import { TextStyleExtended } from './extension/fontsize.extension';
-	import TextStyle from '@tiptap/extension-text-style';
+	import { TextStyleExtended } from '../editor-exection/fontsize.extension';
 
 	export let editor;
 
@@ -34,8 +34,7 @@
 			element: document.querySelector('.editorContainer') ?? undefined,
 			extensions: [
 				StarterKit,
-				BulletList,
-				// Image,
+				Image,
 				Table.configure({
 					resizable: true
 				}),
@@ -53,7 +52,6 @@
 				Subscript,
 				Superscript,
 				Underline,
-				TextStyle,
 				Color,
 				CharacterCount,
 				Placeholder.configure({
@@ -62,32 +60,32 @@
 				TextAlign.configure({
 					types: ['heading', 'paragraph']
 				}),
-				// Indent,
-				FontFamily
-				// TextStyleExtended,
-				// CustomBubbleMenu.configure({
-				// 	element: document.querySelector('.tablemenu') as HTMLElement,
-				// 	tippyOptions: {
-				// 		placement: 'bottom'
-				// 	},
-				// 	shouldShow: ({ editor, view, state, oldState, from, to }) => {
-				// 		return editor.isActive('table');
-				// 	},
-				// 	targetElement: ({ editor, view, state, oldState }) => {
-				// 		let depth = state.selection.$to.depth;
-				// 		if (!editor.isActive('table')) {
-				// 			return null;
-				// 		}
-				// 		while (depth > 1) {
-				// 			depth -= 1;
-				// 			if (state.selection.$to.node(depth).type.name == 'table') {
-				// 				return (editor.view.nodeDOM(state.selection.$to.before(depth)) as HTMLElement)
-				// 					.firstChild as HTMLElement;
-				// 			}
-				// 		}
-				// 		return null;
-				// 	}
-				// })
+				Indent,
+				FontFamily,
+				TextStyleExtended,
+				CustomBubbleMenu.configure({
+					element: document.querySelector('.editorTableMenu') as HTMLElement,
+					tippyOptions: {
+						placement: 'bottom'
+					},
+					shouldShow: ({ editor, view, state, oldState, from, to }) => {
+						return editor.isActive('table');
+					},
+					targetElement: ({ editor, view, state, oldState }) => {
+						let depth = state.selection.$to.depth;
+						if (!editor.isActive('table')) {
+							return null;
+						}
+						while (depth > 1) {
+							depth -= 1;
+							if (state.selection.$to.node(depth).type.name == 'table') {
+								return (editor.view.nodeDOM(state.selection.$to.before(depth)) as HTMLElement)
+									.firstChild as HTMLElement;
+							}
+						}
+						return null;
+					}
+				})
 			],
 			content: '<p>Example Text</p>',
 			autofocus: true,
@@ -98,6 +96,7 @@
 </script>
 
 <div class="editorContainer" />
+<div class="editorTableMenu">1</div>
 
 <style lang="scss">
 	:global {

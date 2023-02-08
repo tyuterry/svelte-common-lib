@@ -10,13 +10,16 @@
 
 	$: editor,
 		editor?.on('transaction', () => {
-			nowHeadingLevel = editor?.getAttributes('heading')['level'] ?? '0';
+			nowHeadingLevel =
+				editor?.getAttributes('heading')['level'] == undefined
+					? '0'
+					: editor?.getAttributes('heading')['level'].toString();
 			nowFontFamily = editor?.getAttributes('textStyle')['fontFamily'] ?? ' ';
 			nowFontSize = editor?.getAttributes('textStyle')['fontSize'] ?? ' ';
 		});
 
 	onDestroy(() => {
-		editor?.off('selectionUpdate');
+		editor?.off('transaction');
 	});
 
 	function setHeading(event: any) {
