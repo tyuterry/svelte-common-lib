@@ -13,4 +13,3 @@ export { default as editorLink } from './exection-link.svelte';
 export { default as editorSuperSubScript } from './exection-supersubscript.svelte';
 export { default as editorIamge } from './exection-image.svelte';
 export { default as editorSave } from './exection-save.svelte';
-export { default as editorTableMenu } from './exection-bubblemenu-table';

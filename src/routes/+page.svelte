@@ -18,8 +18,6 @@
 	import EditorImage from '../lib/editor/editor-ui-extensions/extensions-image.svelte';
 	import EditorSave from '../lib/editor/editor-ui-extensions/extensions-save.svelte';
 
-	import EditorBubblemenu from '../lib/editor/editor-ui-extensions/extensions-bubblemenu-table.svelte';
-
 	import { onMount } from 'svelte';
 
 	let editor: any;
@@ -125,13 +123,6 @@
 		});
 		new EditorSave({
 			target: document.querySelector('.topBarClass') as HTMLElement,
-			props: {
-				editor: editor
-			}
-		});
-		console.log(document.querySelector('.editorTableMenu'));
-		new EditorBubblemenu({
-			target: document.querySelector('.editorTableMenu') as HTMLElement,
 			props: {
 				editor: editor
 			}

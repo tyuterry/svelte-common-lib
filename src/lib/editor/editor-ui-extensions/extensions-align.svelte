@@ -2,7 +2,9 @@
 	import type { Editor } from '@tiptap/core';
 	import { createEventDispatcher, onDestroy } from 'svelte';
 
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
+
+	import FaLayers from 'svelte-fa/src/fa-layers.svelte';
 	import {
 		faAlignLeft,
 		faAlignCenter,

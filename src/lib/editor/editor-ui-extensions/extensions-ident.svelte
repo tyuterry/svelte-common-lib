@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { faOutdent, faIndent } from '@fortawesome/free-solid-svg-icons';
 	import type { Editor } from '@tiptap/core';
 	import { getIndent, getOutdent } from '../editor-extensions/indent.extension';

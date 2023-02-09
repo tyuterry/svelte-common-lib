@@ -2,7 +2,7 @@
 	import type { Editor } from '@tiptap/core';
 	import { createEventDispatcher, onDestroy } from 'svelte';
 
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import {
 		faBold,
 		faItalic,

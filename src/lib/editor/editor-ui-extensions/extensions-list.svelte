@@ -3,7 +3,7 @@
 	import { onDestroy } from 'svelte';
 	export let editor: Editor;
 
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { faListUl, faListOl, faListCheck } from '@fortawesome/free-solid-svg-icons';
 
 	let isActiveBulletList = false;

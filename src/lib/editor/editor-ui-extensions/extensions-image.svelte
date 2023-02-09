@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
-	import Fa from 'svelte-fa/src/fa.svelte';
+	import Fa from 'svelte-fa';
 	import { faImage } from '@fortawesome/free-solid-svg-icons';
 	import { onDestroy } from 'svelte';
 

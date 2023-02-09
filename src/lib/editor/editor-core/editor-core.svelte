@@ -6,7 +6,7 @@
 	import { Editor } from '@tiptap/core';
 
 	import StarterKit from '@tiptap/starter-kit';
-	import { Image } from '../editor-exection/resizeimage.extension';
+	import { Image } from '../editor-extensions/resizeimage.extension';
 	import Highlight from '@tiptap/extension-highlight';
 	import Table from '@tiptap/extension-table';
 	import TableCell from '@tiptap/extension-table-cell';
@@ -22,12 +22,13 @@
 	import CharacterCount from '@tiptap/extension-character-count';
 	import Placeholder from '@tiptap/extension-placeholder';
 	import TextAlign from '@tiptap/extension-text-align';
-	import { Indent } from '../editor-exection/indent.extension';
-	import { CustomBubbleMenu } from '../editor-exection/custombubblemenu.extension';
+	import { Indent } from '../editor-extensions/indent.extension';
+	import { CustomBubbleMenu } from '../editor-extensions/custombubblemenu.extension';
 	import FontFamily from '@tiptap/extension-font-family';
-	import { TextStyleExtended } from '../editor-exection/fontsize.extension';
+	import { TextStyleExtended } from '../editor-extensions/fontsize.extension';
+	import EditorBubblemenuVue from './builtwith/extensions-bubblemenu-table.svelte';
 
-	export let editor;
+	export let editor: Editor;
 
 	onMount(() => {
 		editor = new Editor({
@@ -96,7 +97,9 @@
 </script>
 
 <div class="editorContainer" />
-<div class="editorTableMenu">1</div>
+<div class="editorTableMenu">
+	<EditorBubblemenuVue bind:editor />
+</div>
 
 <style lang="scss">
 	:global {
