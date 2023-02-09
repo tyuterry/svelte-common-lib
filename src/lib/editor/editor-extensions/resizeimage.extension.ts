@@ -75,41 +75,94 @@ export const Image = Node.create<ImageOptions>({
   addNodeView() {
     return ({ HTMLAttributes }) => {
       const dom = document.createElement('div');
-      dom.style.display = 'flex';
-      dom.style.position = 'relative';
-      dom.style.width = 'fit-content';
-      dom.style.margin = '0';
+      dom.className = 'EditorImgDom';
 
+      let domHover = false
+
+      dom.addEventListener('mouseenter', () => {
+        domHover = true;
+        if (domHover && !nowResize) {
+          dom.classList.add('Show');
+        }
+      })
+      dom.addEventListener('mouseleave', () => {
+        domHover = false;
+        if (!domHover && !nowResize) {
+          dom.classList.remove('Show');
+        }
+      })
 
       const img = document.createElement('img');
+
+      let targetResizer: HTMLElement | null;
+      let imgHeight = 0;
+      let imgWidth = 0;
+      let nowResize = false;
+
       Object.keys(HTMLAttributes).forEach((keys) => {
         img.setAttribute(keys, HTMLAttributes[keys]);
       });
 
-      const resizer = document.createElement('div');
-      resizer.className = 'resizer';
-      resizer.style.width = '10px';
-      resizer.style.height = '10px';
-      resizer.style.background = 'white';
-      resizer.style.position = 'absolute';
-      resizer.style.right = '0';
-      resizer.style.bottom = '0';
-      resizer.style.cursor = 'se-resize';
-      resizer.style.border = '1px solid black';
-      dom.appendChild(resizer);
-      resizer.addEventListener('mousedown', initResize, false);
+      const divPostions = [
+        { top: '0', left: '0', },
+        { top: '0', right: '0', },
+        { bottom: '0', left: '0', },
+        { bottom: '0', right: '0', },
+        { top: '0', left: '50%', },
+        { bottom: '0', right: '50%', },
+        { top: '50%', left: '0', },
+        { bottom: '50%', right: '0', },
+      ];
+      divPostions.forEach((el) => {
 
+        const resizer = document.createElement('div');
+        resizer.className = 'EditorImgResizer';
+        if (el.top != undefined) resizer.style.top = el.top;
+        if (el.bottom != undefined) resizer.style.bottom = el.bottom;
+        if (el.left != undefined) resizer.style.left = el.left;
+        if (el.right != undefined) resizer.style.right = el.right;
+
+        resizer.style.cursor = 'se-resize';
+        dom.appendChild(resizer);
+        resizer.addEventListener('mousedown', initResize, false);
+      });
       dom.appendChild(img);
-      function initResize() {
-        window.addEventListener('mousemove', Resize, false);
+
+      window.addEventListener('mousemove', Resize, false);
+
+
+      function initResize(e: MouseEvent) {
+        e.stopPropagation();
+        e.preventDefault();
+        targetResizer = <HTMLElement>e.target;
+        imgHeight = img.offsetHeight;
+        imgWidth = img.offsetWidth;
+        nowResize = true;
         window.addEventListener('mouseup', stopResize, false);
       }
+
       function Resize(e: MouseEvent) {
-        img.style.width = (e.clientX - dom.offsetLeft) + 'px';
-        img.style.height = (e.clientY - dom.offsetTop) + 'px';
+        if (nowResize) {
+          if (targetResizer?.style.top == '0px') {
+            img.style.height = imgHeight + (dom.offsetTop - e.clientY) + 'px';
+          }
+          if (targetResizer?.style.bottom == '0px') {
+            img.style.height = (e.clientY - dom.offsetTop) + 'px';
+          }
+          if (targetResizer?.style.left == '0px') {
+            img.style.width = imgWidth - (e.clientX - dom.offsetLeft) + 'px';
+          }
+          if (targetResizer?.style.right == '0px') {
+            img.style.width = (e.clientX - dom.offsetLeft) + 'px';
+          }
+        }
       }
+
       function stopResize() {
-        window.removeEventListener('mousemove', Resize, false);
+        nowResize = false;
+        if (!domHover && !nowResize) {
+          dom.classList.remove('Show');
+        }
         window.removeEventListener('mouseup', stopResize, false);
       }
 

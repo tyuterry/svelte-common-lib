@@ -119,6 +119,10 @@
 		margin-right: 0.25rem;
 		cursor: pointer;
 
+		svg.mask {
+			color: white;
+		}
+
 		&.is-active {
 			background-color: #afafaf;
 			svg.mask {
@@ -139,4 +143,21 @@
 		}
 	}
 }
+.EditorImgDom {
+	display: flex;
+	position: relative;
+	width: fit-content;
+	margin: 0;
+	.EditorImgResizer {
+		display: none;
+		width: 10px;
+		height: 10px;
+		background: #4199ff;
+		position: absolute;
+	}
+	&.Show .EditorImgResizer {
+		display: block;
+	}
+}
+
 /* Basic Style End */

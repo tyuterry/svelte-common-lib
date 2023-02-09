@@ -13,19 +13,20 @@
 			if (url === null) {
 				return;
 			}
-			// empty
-			if (url === '') {
-				editor.chain().focus().extendMarkRange('link').unsetLink().run();
-				return;
-			}
 			// update link
-			editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+			editor
+				.chain()
+				.focus()
+				.setImage({
+					src: 'https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8='
+				})
+				.run();
 
 			// editor
 			// 	.chain()
 			// 	.focus()
 			// 	.setImage({
-			// 		src: 'https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8='
+			// 		src: url
 			// 	})
 			// 	.run();
 			//https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=
